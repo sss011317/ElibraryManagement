@@ -58,7 +58,7 @@
                                <label>Author Name</label>
                                 <%--search at BootStrap Website about "form" function--%>
                                 <div class="form-group">
-                                    <asp:TextBox cssclass="form-control" ID="AuthorNameText" runat="server" placeholder="Autor Name"></asp:TextBox>
+                                    <asp:TextBox cssclass="form-control" ID="AuthorNameText" runat="server" placeholder="Author Name"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
