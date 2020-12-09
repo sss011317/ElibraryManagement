@@ -120,7 +120,9 @@ namespace Elibrary
             Session["fullname"] = "";
             Session["role"] = "";
             Session["status"] = "";
+            Response.Write("<script>alert('Logout Success');</script");
             Response.Redirect("homepage.aspx");
+            
         }
     }
 }
