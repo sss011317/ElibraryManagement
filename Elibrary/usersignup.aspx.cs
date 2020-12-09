@@ -91,7 +91,7 @@ namespace Elibrary
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-                Response.Write("<script>alert('Sgn Up Successful.');</script");
+                Response.Write("<script>alert('Sign Up Successful.');</script");
 
             }
             catch (Exception ex)

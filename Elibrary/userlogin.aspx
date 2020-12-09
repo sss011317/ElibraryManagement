@@ -34,20 +34,20 @@
                             <div class="col">
                                 <!--search at BootStrap Website about "form" function-->
                                 <div class="form-group">
-                                    <asp:TextBox cssclass="form-control" ID="TextBox1" runat="server" placeholder="Account"></asp:TextBox>
+                                    <asp:TextBox cssclass="form-control" ID="AccountTextBox" runat="server" placeholder="Account"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox cssclass="form-control" ID="TextBox4" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox cssclass="form-control" ID="PasswordTextBox" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <!--search at BootStrap Website about "button" function-->
                                     <!--btn-block will be same size as your form-->
-                                    <asp:Button class="btn btn-primary btn-block btn-lg" ID="Button1" runat="server" Text="Log In" />
+                                    <asp:Button class="btn btn-primary btn-block btn-lg" ID="LoginButton" runat="server" Text="Log In" OnClick="LoginButton_Click" />
                                 </div>
                                 <div class="form-group">
                                     <!--It is the toolBox => html => inputbutton-->
                                      <a href="usersignup.aspx">
-                                    <input class="btn btn-info btn-block btn-lg" id="Button2" type="button" value="Sign Up" />
+                                    <input class="btn btn-info btn-block btn-lg" id="signupButton" type="button" value="Sign Up" />
                                     </a>
                                 </div>
 
