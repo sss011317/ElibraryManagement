@@ -34,7 +34,7 @@ namespace Elibrary
                     usersignupButton.Visible = false;
                     logoutButton.Visible = true;
                     HelloUserButton.Visible = true;
-                    HelloUserButton.Text = "Hello "+Session["username"].ToString();
+                    HelloUserButton.Text = "Hello "+Session["fullname"].ToString();
 
                     adminloginButton.Visible = true; 
                     adminauthormanagementButton.Visible = false;
@@ -123,6 +123,11 @@ namespace Elibrary
             Response.Write("<script>alert('Logout Success');</script");
             Response.Redirect("homepage.aspx");
             
+        }
+
+        protected void HelloUserButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("userprofile.aspx");
         }
     }
 }

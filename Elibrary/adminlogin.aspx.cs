@@ -49,7 +49,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
     }

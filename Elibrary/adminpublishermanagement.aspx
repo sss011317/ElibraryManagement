@@ -41,8 +41,8 @@
                                 <div class="form-group">
                                     <!--"input-group ganna take the asp:option side by side"-->
                                     <div class="input-group">
-                                        <asp:TextBox cssclass="form-control" ID="TextBox1" runat="server" placeholder="ID"></asp:TextBox>
-                                        <asp:Button class="btn btn-primary" ID="Button1" runat="server" Text="GO" />
+                                        <asp:TextBox cssclass="form-control" ID="PublisherIDText" runat="server" placeholder="ID"></asp:TextBox>
+                                        <asp:Button class="btn btn-primary" ID="SearchButton" runat="server" Text="GO" OnClick="SearchButton_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                <label>Publisher Name</label>
                                 <!--search at BootStrap Website about "form" function-->
                                 <div class="form-group">
-                                    <asp:TextBox cssclass="form-control" ID="TextBox2" runat="server" placeholder="Autor Name"></asp:TextBox>
+                                    <asp:TextBox cssclass="form-control" ID="PublisherNameText" runat="server" placeholder="Publisher Name"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -60,17 +60,17 @@
                                 <!--search at BootStrap Website about "form" function-->
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <asp:Button class="btn btn-lg btn-block btn-success" ID="Button2" runat="server" Text="Add" />
+                                        <asp:Button class="btn btn-lg btn-block btn-success" ID="AddButton" runat="server" Text="Add" OnClick="AddButton_Click" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <asp:Button class="btn btn-lg btn-block btn-primary" ID="Button3" runat="server" Text="Update" />
+                                        <asp:Button class="btn btn-lg btn-block btn-primary" ID="UpdateButton" runat="server" Text="Update" OnClick="UpdateButton_Click" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <asp:Button class="btn btn-lg btn-block btn-danger" ID="Button4" runat="server" Text="Delete" />
+                                        <asp:Button class="btn btn-lg btn-block btn-danger" ID="DeleteButton" runat="server" Text="Delete" onclientclick="javascript:return confirm('Are you sure delete this one？');" OnClick="DeleteButton_Click"/>
                                     </div>
                                 </div>
                          </div>
@@ -116,9 +116,15 @@
 
 
                         <div class="row">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elibraryDBConnectionString %>" SelectCommand="SELECT * FROM [publisher_master_tb1]"></asp:SqlDataSource>
                             <div class="col">
                                 <!--search at BootStrap Website about "table" function-->
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server"></asp:GridView>
+                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="publisher_id" DataSourceID="SqlDataSource1">
+                                    <Columns>
+                                        <asp:BoundField DataField="publisher_id" HeaderText="Publisher ID" ReadOnly="True" SortExpression="publisher_id" />
+                                        <asp:BoundField DataField="publisher_name" HeaderText="Publisher Name" SortExpression="publisher_name" />
+                                    </Columns>
+                                </asp:GridView>
                             </div>
                         </div>
 

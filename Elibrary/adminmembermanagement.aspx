@@ -150,7 +150,7 @@
                         <div class="row">
                                 <!--search at BootStrap Website about "form" function-->
                                 <div class="col-8 mx-auto">
-                                        <asp:Button class="btn btn-lg btn-block btn-danger" ID="DeleteUserButton" runat="server" Text="Delete User Permanently" OnClick="DeleteUserButton_Click" />
+                                        <asp:Button class="btn btn-lg btn-block btn-danger" ID="DeleteUserButton" runat="server" Text="Delete User Permanently" onclientclick="javascript:return confirm('Are you sure delete this one？');" OnClick="DeleteUserButton_Click" />
                                 </div>
                          </div>
 

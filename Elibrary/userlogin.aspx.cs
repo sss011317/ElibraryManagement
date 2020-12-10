@@ -44,6 +44,8 @@ namespace Elibrary
                         Session["role"] = "user";
                         Session["status"] = dr.GetValue(10).ToString();
                     }
+                    //Response.Write($"<script language='javascript'>alert('Login Sucess,Hello {Session["fullname"].ToString().Trim()}');</script");
+                    Response.Write("<script language='javascript'>alert('Login Sucess,Hello');</script");
                     Response.Redirect("homepage.aspx");
                 }
                 else
@@ -54,7 +56,7 @@ namespace Elibrary
             }
             catch(Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
             

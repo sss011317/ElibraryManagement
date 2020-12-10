@@ -26,7 +26,11 @@ namespace Elibrary
                 Response.Write("<script>alert('This account is Exist.');</script");
             }
             else
+            {
                 signUpNewMember();
+                Response.Redirect("homepage.aspx");
+            }
+                
         }
 
         bool checkMemberExists()
@@ -56,7 +60,9 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                
+
+
                 return false;
             }
             
@@ -96,7 +102,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
 

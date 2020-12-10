@@ -38,7 +38,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
             clearForm();
         }
@@ -78,7 +78,7 @@ namespace Elibrary
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM author_master_tb1 WHERE author_id={AuthorIDText.Text.Trim()};", con);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM author_master_tb1 WHERE author_id='{AuthorIDText.Text.Trim()}';", con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -96,7 +96,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
                 return false;
             }
 
@@ -110,7 +110,7 @@ namespace Elibrary
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM author_master_tb1 WHERE author_id={AuthorIDText.Text.Trim()};", con);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM author_master_tb1 WHERE author_id='{AuthorIDText.Text.Trim()}';", con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -128,7 +128,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
         void addNewAuthor()
@@ -153,22 +153,30 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
         void updateAuthor()
         {
-            SqlConnection con = new SqlConnection(strcon);
-            if (con.State == ConnectionState.Closed)
+            try
             {
-                con.Open();
-            }
-            SqlCommand cmd = new SqlCommand("UPDATE author_master_tb1 SET author_name = @author_name where author_id= @author_id;", con);
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("UPDATE author_master_tb1 SET author_name = @author_name where author_id= @author_id;", con);
 
-            cmd.Parameters.AddWithValue("@author_name", AuthorNameText.Text.Trim());
-            cmd.Parameters.AddWithValue("@author_id", AuthorIDText.Text.Trim());
-            cmd.ExecuteNonQuery();
-            con.Close();
+                cmd.Parameters.AddWithValue("@author_name", AuthorNameText.Text.Trim());
+                cmd.Parameters.AddWithValue("@author_id", AuthorIDText.Text.Trim());
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
+            }
+           
 
         }
         void deleteAuthor()
@@ -180,16 +188,13 @@ namespace Elibrary
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("DELETE FROM author_master_tb1 WHERE author_id= @author_id;", con);
-
-                cmd.Parameters.AddWithValue("@author_id", AuthorIDText.Text.Trim());
-
+                SqlCommand cmd = new SqlCommand($"DELETE FROM author_master_tb1 WHERE author_id= '{AuthorIDText.Text.Trim()}';", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script");
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
 
         }
@@ -199,7 +204,7 @@ namespace Elibrary
             AuthorNameText.Text= "";
             GridView1.DataBind();  
         }
-
+        
 
     }
 

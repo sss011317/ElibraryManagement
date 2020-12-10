@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <asp:Button class="btn btn-lg btn-block btn-danger" ID="DeleteButton" runat="server" Text="Delete" OnClick="DeleteButton_Click" />
+                                        <asp:Button class="btn btn-lg btn-block btn-danger" ID="DeleteButton" runat="server" Text="Delete" onclientclick="javascript:return confirm('Are you sure delete this one？');" OnClick="DeleteButton_Click" />
                                     </div>
                                 </div>
                          </div>
