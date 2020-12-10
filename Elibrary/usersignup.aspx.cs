@@ -21,16 +21,17 @@ namespace Elibrary
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (checkMemberExists())
-            {
-                Response.Write("<script>alert('This account is Exist.');</script");
-            }
-            else
-            {
-                signUpNewMember();
-                Response.Redirect("homepage.aspx");
-            }
-                
+                if (checkMemberExists())
+                {
+                    Response.Write("<script>alert('This account is Exist.');</script");
+                }
+                else
+                {
+                    signUpNewMember();
+                    Response.Write("<script language=javascript>alert('SignIn Success!!');</script>");
+                    Server.Transfer("homepage.aspx", true);
+                    //Response.Redirect("homepage.aspx");
+                }
         }
 
         bool checkMemberExists()
@@ -60,12 +61,9 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                
-
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
                 return false;
             }
-            
         }
 
 
@@ -105,6 +103,6 @@ namespace Elibrary
                 Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
-
+        
     }
 }
