@@ -61,7 +61,7 @@ namespace Elibrary
             }
             catch(Exception ex)
             {
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
 
         }
@@ -120,9 +120,10 @@ namespace Elibrary
             Session["fullname"] = "";
             Session["role"] = "";
             Session["status"] = "";
-            Response.Write("<script>alert('Logout Success');</script");
-            Response.Redirect("homepage.aspx");
-            
+            ScriptManager.RegisterStartupScript(this, this.GetType(),
+                "alert",
+                "alert('Log Out Success!!');window.location='homepage.aspx';", true);
+
         }
 
         protected void HelloUserButton_Click(object sender, EventArgs e)

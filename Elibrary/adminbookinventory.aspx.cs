@@ -14,7 +14,7 @@ namespace Elibrary
 {
     public partial class adminbookinventory : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         static string global_filepath;
         static int global_actual_stock, global_current_stock, global_issued_books;
         protected void Page_Load(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace Elibrary
             }
             catch(Exception ex)
             {
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
         void addNewBook()
@@ -155,9 +155,7 @@ namespace Elibrary
             }
             catch(Exception ex)
             {
-                
-
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         
         }

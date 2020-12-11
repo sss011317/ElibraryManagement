@@ -12,7 +12,7 @@ namespace Elibrary
 {
     public partial class userprofile : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty((string)Session["username"]))
@@ -61,8 +61,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
 
@@ -75,7 +74,7 @@ namespace Elibrary
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM book_issue_tb1 WHERE member_id='{Session["username"].ToString()}';", con);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM book_issue_tb1 WHERE member_id='{Session["username"]}';", con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -98,7 +97,7 @@ namespace Elibrary
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM member_master_tb1 WHERE member_id='{Session["username"].ToString()}';", con);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM member_master_tb1 WHERE member_id='{Session["username"]}';", con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -144,7 +143,7 @@ namespace Elibrary
         }
         void updateUserData()
         {
-            string password = "";
+            string password;
             if(NewPassowrdText.Text.Trim() =="")
             {
                 password = PasswordText.Text.Trim();

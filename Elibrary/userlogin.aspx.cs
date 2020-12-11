@@ -12,17 +12,11 @@ namespace Elibrary
 {
     public partial class userlogin : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             try
@@ -38,16 +32,14 @@ namespace Elibrary
                 {
                     while (dr.Read())
                     {
-                        Response.Write($"<script>alert('Hello {dr.GetValue(0).ToString()}');</script");
                         Session["username"] = dr.GetValue(8).ToString();
                         Session["fullname"] = dr.GetValue(0).ToString();
                         Session["role"] = "user";
                         Session["status"] = dr.GetValue(10).ToString();
                     }
-                    //Response.Write($"<script language='javascript'>alert('Login Sucess,Hello {Session["fullname"].ToString().Trim()}');</script");
-                    Response.Write("<script language=javascript>alert('Login Success!!');</script>");
-                    Server.Transfer("homepage.aspx", true);
-                    //Response.Redirect("homepage.aspx");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('Login Success!!');window.location='homepage.aspx';", true);
                 }
                 else
                 {

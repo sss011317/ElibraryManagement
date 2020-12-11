@@ -13,7 +13,7 @@ namespace Elibrary
     public partial class usersignup : System.Web.UI.Page
     {
         //connectionstring has to same as "Web.config/connectionString/add/name"
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString; 
+        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString; 
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,10 +28,10 @@ namespace Elibrary
                 else
                 {
                     signUpNewMember();
-                    Response.Write("<script language=javascript>alert('SignIn Success!!');</script>");
-                    Server.Transfer("homepage.aspx", true);
-                    //Response.Redirect("homepage.aspx");
-                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alert",
+                    "alert('SignUp Success!!');window.location='homepage.aspx';", true);
+            }
         }
 
         bool checkMemberExists()
@@ -95,7 +95,6 @@ namespace Elibrary
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-                Response.Write("<script>alert('Sign Up Successful.');</script");
 
             }
             catch (Exception ex)

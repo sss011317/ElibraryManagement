@@ -16,7 +16,7 @@ namespace Elibrary
 
      public partial class adminbookissuing : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -118,9 +118,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                
-
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
         bool checkBookExists()

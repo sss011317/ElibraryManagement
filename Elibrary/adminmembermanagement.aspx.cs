@@ -12,7 +12,7 @@ namespace Elibrary
 {
     public partial class adminmembermanagement : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        readonly string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -81,9 +81,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-                
-
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
         void updateMemberStatusByID(string status)
@@ -105,7 +103,7 @@ namespace Elibrary
             }
             catch (Exception ex)
             {
-
+                Response.Write("<script language='javascript'>alert('" + ex.Message + "');</script");
             }
         }
         void deleteMemberByID()
@@ -136,7 +134,6 @@ namespace Elibrary
             else
             {
                 Response.Write("<script>alert('Account is not available');</script");
-
             }
 
         }
