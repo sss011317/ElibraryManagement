@@ -80,6 +80,7 @@
     <Content Include="css\customstylesheet.css" />
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
+    <Content Include="errorPage.aspx" />
     <Content Include="fontawsome\attribution.js" />
     <Content Include="fontawsome\css\all.css" />
     <Content Include="fontawsome\css\all.min.css" />
@@ -1793,6 +1794,13 @@
     </Compile>
     <Compile Include="adminpublishermanagement.aspx.designer.cs">
       <DependentUpon>adminpublishermanagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="errorPage.aspx.cs">
+      <DependentUpon>errorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="errorPage.aspx.designer.cs">
+      <DependentUpon>errorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>

@@ -1,0 +1,9 @@
+http://somee.com/
+
+follow the video step by step
+https://www.youtube.com/watch?v=4bwjMsJKzqA
+
+1.create the account
+2.create the database
+3.attach the database(.mdf .ldf) care for the database growuth maximum(you have to setting in database => properties => growth limit)
+4.compression the project to zip and upload , then unzip on web 
